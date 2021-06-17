@@ -26,6 +26,23 @@ class Address(Base):
     person_id = Column(Integer, ForeignKey('person.id'))
     person = relationship(Person)
 
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True)
+    username =
+    firstname =
+    lastname =
+    email =
+
+
+class Folower(Base):
+    __tablename__ = 'follower'
+    user_from_id = Column(Integer, primary_key=True)
+    user_to_id = Column(Integer, primary_key=True)
+
+
+
+
     def to_dict(self):
         return {}
 

@@ -29,17 +29,39 @@ class Address(Base):
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    username =
-    firstname =
-    lastname =
-    email =
+    username = Column(String(250))
+    firstname = Column(String(250))
+    lastname = Column(String(250))
+    email = Column(String(250))
 
 
-class Folower(Base):
+class Follower(Base):
     __tablename__ = 'follower'
-    user_from_id = Column(Integer, primary_key=True)
+    user_from_id = Column(Integer, ForeignKey('user.id'))
     user_to_id = Column(Integer, primary_key=True)
 
+
+class Post(Base):
+    __tablename__ = 'post'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'))
+
+
+class Comment(Base):
+    __tablename__ = 'comment'
+    id = Column(Integer, primary_key=True)
+    comment_text = Column(String(250))
+    author_id = Column(Integer, ForeignKey('user.id'))
+    post_id = Column(Integer, ForeignKey('post.id'))
+
+
+
+class Media(Base):
+    __tablename__ = 'media'
+    id = Column(Integer, primary_key=True)
+    type = Column(String)
+    url = Column(String(250))
+    post_id = Column(Integer, ForeignKey('post.id'))
 
 
 

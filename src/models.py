@@ -29,10 +29,10 @@ class Address(Base):
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    username = Column(String(250))
-    firstname = Column(String(250))
-    lastname = Column(String(250))
-    email = Column(String(250))
+    username = Column(String(50))
+    firstname = Column(String(50))
+    lastname = Column(String(50))
+    email = Column(String(50))
 
 
 class Follower(Base):
@@ -50,7 +50,7 @@ class Post(Base):
 class Comment(Base):
     __tablename__ = 'comment'
     id = Column(Integer, primary_key=True)
-    comment_text = Column(String(250))
+    comment_text = Column(String(50))
     author_id = Column(Integer, ForeignKey('user.id'))
     post_id = Column(Integer, ForeignKey('post.id'))
 
@@ -60,7 +60,7 @@ class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
     type = Column(String)
-    url = Column(String(250))
+    url = Column(String(50))
     post_id = Column(Integer, ForeignKey('post.id'))
 
 
